@@ -1,6 +1,0 @@
-- Alles in spraak mogelijk maken! Dus ook het onmogelijke prio 2
-- Py2exe for windows, misschien android in de appstore? Apple nog even zoeken. Of website natuurlijk via flask! prio 1
-- User friendly én debug error code
-- Admin en user mode prio 3
-- Iets met datetime gedoe voor relatieve data
-- Historie??
