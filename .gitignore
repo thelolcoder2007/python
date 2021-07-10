@@ -1,3 +1,5 @@
 fleurhome/todo.txt
 __pycache__
 .gitignore
+fleurhome_pack.egg-info
+dist
