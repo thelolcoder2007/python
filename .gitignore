@@ -3,3 +3,4 @@ __pycache__
 .gitignore
 fleurhome_pack.egg-info
 dist
+build
