@@ -113,12 +113,12 @@ class Output():
 
     def tekstoutput(self):
         flash(self.saying) #print self.saying (die in __init__ is aangemaakt)
-
-data = Input() #initialiseer Input class
-data.get_method() #hoe wil je het doen en doe het dan ook
-sqldata = Sql(data.gezegd) #initialiseer Sql class
-sqldata.get_dagvak() #krijg de dag en het vak
-sqldata.sql_processing() # lees uit de database welk huiswerk je moet hebben
-sqldata.close() #sluit de database
-output = Output(sqldata.vak, sqldata.dag, sqldata.huiswerk, data.methode) #initialiseer Output class
-output.spraakoftekst() #output het vervolgens.
+def fleurhome():
+    data = Input() #initialiseer Input class
+    data.get_method() #hoe wil je het doen en doe het dan ook
+    sqldata = Sql(data.gezegd) #initialiseer Sql class
+    sqldata.get_dagvak() #krijg de dag en het vak
+    sqldata.sql_processing() # lees uit de database welk huiswerk je moet hebben
+    sqldata.close() #sluit de database
+    output = Output(sqldata.vak, sqldata.dag, sqldata.huiswerk, data.methode) #initialiseer Output class
+    output.spraakoftekst() #output het vervolgens.
