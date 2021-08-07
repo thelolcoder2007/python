@@ -4,4 +4,4 @@ __pycache__
 fleurhome_pack.egg-info
 dist
 build
-*/*.egg_info
+fleurhome.egg-info

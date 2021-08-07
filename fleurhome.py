@@ -21,20 +21,20 @@ class Input():
         elif str.lower(method) == "spraak": #als je spraak hebt gekozen:
             self.get_audio() #run de functie get_audio()
         else: #Als je geen van beide hebt gekozen:
-            flash("Not valid value entered. Program will now quit") #print dat je het niet goed hebt gedaan
+            print("Not valid value entered. Program will now quit") #print dat je het niet goed hebt gedaan
             sys.exit() #stop het script
 
     def get_audio(self):
         with speech_recognition.Microphone(device_index=1) as source: #open de microfoon
             r = speech_recognition.Recognizer() #initialiseer de microfoon
-            flash("Zeg het volgende: wat is het huiswerk voor <vak> op <dag> (dag zondag, maandag en niet vandaag, morgen, etc.)") #print hoe het gezegd moet worden.
+            print("Zeg het volgende: wat is het huiswerk voor <vak> op <dag> (dag zondag, maandag en niet vandaag, morgen, etc.)") #print hoe het gezegd moet worden.
             audio = r.listen(source) #luister naar wat ik zeg (hier is het nog mp3)
             try:
                 said = r.recognize_google(audio, language="nl_NL") #probeer te kijken in de google speech library of je het herkent in het nederlands. Hier wordt de mp3 van line 31 omgezet in tekst.
-                flash(said) #herhaal wat je hebt gezegd, net zoals bij google assistent.
+                print(said) #herhaal wat je hebt gezegd, net zoals bij google assistent.
                 self.gezegd = said #zorg ervoor dat wat je gezegd gebruikt kan worden in class Sql.
             except Exception as e:
-                flash('Ik heb het niet verstaan. Het programma sluit nu.') #zeg dat je het niet verstaan hebt.
+                print('Ik heb het niet verstaan. Het programma sluit nu.') #zeg dat je het niet verstaan hebt.
                 sys.exit() #stop het script
 
     def get_tekst(self):
@@ -79,7 +79,7 @@ class Sql():
         if match: #ja, het komt overeen (match = True)
             self.vak, self.dag = match.groups() #haal de self.vak en self.dag uit de regex. En zorg ervoor dat ze in andere functies gebruikt kunnen worden.
         else:
-            flash("Je hebt je niet aan de zin gehouden die hierboven is beschreven. Het programma sluit nu.") #print dat je het niet goed gedaan hebt.
+            print("Je hebt je niet aan de zin gehouden die hierboven is beschreven. Het programma sluit nu.") #print dat je het niet goed gedaan hebt.
             sys.exit() #stop het script.
 
     def sql_processing(self):
@@ -112,13 +112,17 @@ class Output():
         speak(self.saying, "nl", save=False) #zeg self.saying (die in __init__ is aangemaakt)
 
     def tekstoutput(self):
-        flash(self.saying) #print self.saying (die in __init__ is aangemaakt)
-def fleurhome():
-    data = Input() #initialiseer Input class
-    data.get_method() #hoe wil je het doen en doe het dan ook
-    sqldata = Sql(data.gezegd) #initialiseer Sql class
-    sqldata.get_dagvak() #krijg de dag en het vak
-    sqldata.sql_processing() # lees uit de database welk huiswerk je moet hebben
-    sqldata.close() #sluit de database
-    output = Output(sqldata.vak, sqldata.dag, sqldata.huiswerk, data.methode) #initialiseer Output class
-    output.spraakoftekst() #output het vervolgens.
+        print(self.saying) #print self.saying (die in __init__ is aangemaakt)
+
+def run():
+        data = Input() #initialiseer Input class
+        data.get_method() #hoe wil je het doen en doe het dan ook
+        sqldata = Sql(data.gezegd) #initialiseer Sql class
+        sqldata.get_dagvak() #krijg de dag en het vak
+        sqldata.sql_processing() # lees uit de database welk huiswerk je moet hebben
+        sqldata.close() #sluit de database
+        output = Output(sqldata.vak, sqldata.dag, sqldata.huiswerk, data.methode) #initialiseer Output class
+        output.spraakoftekst() #output het vervolgens.
+
+if __name__ == '__main__':
+    run()
