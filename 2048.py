@@ -1,9 +1,5 @@
-import pygame
 import functions
-pygame.init()
-
-screen = pygame.display.set_mode([600, 600])
-
+import pygame
 blokje = [[None,None,None,None],
 [None,None,None,None],
 [None,None,None,None],
@@ -24,10 +20,10 @@ while running:
             elif event.key == pygame.K_DOWN:
                 blokje = functions.godown(blokje)
             elif event.key == pygame.K_LEFT:
-                print("left")
+                blokje = functions.goleft(blokje)
             elif event.key == pygame.K_RIGHT:
-                print("right")
-    screen.fill((255,255,255))
+                blokje = functions.goright(blokje)
+    functions.renderbg()
     for y in range(3):
         for x in range(3):
             blokje = functions.render(x, y, blokje)

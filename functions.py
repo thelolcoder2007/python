@@ -1,6 +1,7 @@
 from block import Block
 import pygame
 
+
 coordinates = [100, 175, 200, 275, 300, 375, 400, 475]
 pygame.init()
 screen = pygame.display.set_mode([600, 600])
@@ -19,7 +20,7 @@ def render(x, y, blokje):
     if blokje[y][x] != None:
         posx = coordinates[blokje[y][x].posX * 2 - 2]
         posy = coordinates[blokje[y][x].posY * 2 - 2]
-        img = font.render(str(blokje[y][x].value), True, (255,0,0))
+        img = font.render(str(blokje[y][x].value), True, (255,255,0))
         screen.blit(img, (posx, posy))
     return blokje
 
@@ -37,3 +38,10 @@ def goleft(blokje):
 def goright(blokje):
     print('left')
     return blokje
+
+def renderbg():
+    global screen
+    pygame.Surface.fill(screen, (255,255,255))
+    for i in range(0,8,2):
+        for j in range(0,8,2):
+            pygame.draw.rect(screen, (0,0,0), (coordinates[i], coordinates[j], coordinates[i+1]-coordinates[i], coordinates[j+1]-coordinates[j]))
