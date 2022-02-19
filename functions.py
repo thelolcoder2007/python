@@ -25,6 +25,7 @@ def render(x, y, blokje):
     return blokje
 
 def goup(blokje):
+    print('up')
     return blokje
 
 def godown(blokje):
@@ -36,7 +37,7 @@ def goleft(blokje):
     return blokje
 
 def goright(blokje):
-    print('left')
+    print('right')
     return blokje
 
 def renderbg():
