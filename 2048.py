@@ -24,8 +24,8 @@ while running:
             elif event.key == pygame.K_RIGHT:
                 blokje = functions.goright(blokje)
     functions.renderbg()
-    for y in range(3):
-        for x in range(3):
+    for y in range(4):
+        for x in range(4):
             blokje = functions.render(x, y, blokje)
     pygame.display.flip()
 
