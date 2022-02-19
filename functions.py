@@ -5,7 +5,7 @@ import pygame
 coordinates = [100, 175, 200, 275, 300, 375, 400, 475]
 pygame.init()
 screen = pygame.display.set_mode([600, 600])
-font = pygame.font.SysFont("Calibri Regular.ttf", 50)
+font = pygame.font.SysFont("Calibri Regular.ttf", 100)
 
 def generateNewBlock(blokje):
     blok = Block()
