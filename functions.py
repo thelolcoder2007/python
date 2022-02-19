@@ -9,8 +9,8 @@ font = pygame.font.SysFont("Calibri Regular.ttf", 50)
 
 def generateNewBlock(blokje):
     blok = Block()
-    if blokje[blok.posX][blok.posY] != None:
-        generateNewBlock()
+    if blokje[blok.posY][blok.posX] != None:
+        generateNewBlock(blokje)
     else:
         blokje[blok.posY][blok.posX] = blok
     return blokje
