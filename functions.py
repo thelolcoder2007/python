@@ -25,6 +25,11 @@ def render(x, y, blokje):
     return blokje
 
 def goup(blokje):
+    for j in range(4):
+        for i in range(4):
+            if blokje[j][i] == None:
+                blokje[j][3-i] = blokje[j][i]
+                blokje[j][3-i] = None
     print('up')
     return blokje
 
