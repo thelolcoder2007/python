@@ -12,13 +12,7 @@ class Block():
             value = random.choice([2,2,2,2,2,2,4])
         self.value = value
     
-    def move(self, direction):
-        if direction == "up":
-            self.posY = 1
-        elif direction == "down":
-            self.posY = 4
-        elif direction == "left":
-            self.posX = 1
-        elif direction == "right":
-            self.posX = 4
+    def move(self, x,y):
+        self.posX = x
+        self.posY = y
 
